@@ -1,0 +1,27 @@
+{
+  "name": "antigravity-server",
+  "version": "0.1.0",
+  "description": "vLLM-compatible proxy server for Google Antigravity",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "bun run --watch src/server.ts",
+    "serve": "bun run src/server.ts",
+    "build": "tsc",
+    "start": "bun run dist/server.js",
+    "auth": "bun run src/cli/auth.ts",
+    "quota": "bun run src/cli/quota.ts"
+  },
+  "dependencies": {
+    "hono": "^4.11.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prettier": "^3.8.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
