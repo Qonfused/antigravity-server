@@ -474,6 +474,26 @@ curl http://localhost:8080/v1/quota
 
 ---
 
+## Maintenance
+
+### Updating Constants
+
+Antigravity Server relies on internal constants (Client ID, Secret, API Version, Endpoints) extracted from the official Antigravity binary. If the official client updates and the server stops working, you can update these constants automatically:
+
+```bash
+bun run update-constants
+```
+
+This script will:
+1. Fetch the latest Antigravity version info.
+2. Download the corresponding binary.
+3. Extract `main.js` and scan for updated constants.
+4. Update `src/constants.ts` with any changes (including API version `v1internal` etc.).
+
+It is recommended to run this script if you encounter authentication errors or if Google pushes a breaking change to the internal API.
+
+---
+
 ## Troubleshooting
 
 ### Authentication

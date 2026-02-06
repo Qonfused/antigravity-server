@@ -7,7 +7,7 @@
   SPDX-License-Identifier: Apache-2.0
 **/
 
-import { ANTIGRAVITY_ENDPOINTS, ANTIGRAVITY_HEADERS, FETCH_TIMEOUT_MS } from "../constants.js";
+import { ANTIGRAVITY_ENDPOINTS, ANTIGRAVITY_HEADERS, FETCH_TIMEOUT_MS, ANTIGRAVITY_API_VERSION } from "../constants.js";
 import type { QuotaModel, QuotaSummary } from "../types.js";
 
 // =============================================================================
@@ -65,7 +65,7 @@ async function fetchWithTimeout(
 // =============================================================================
 
 /**
- * Fetch available models from v1internal:fetchAvailableModels
+ * Fetch available models from :fetchAvailableModels
  */
 async function fetchAvailableModels(
   accessToken: string,
@@ -79,7 +79,7 @@ async function fetchAvailableModels(
 
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const response = await fetchWithTimeout(`${endpoint}/v1internal:fetchAvailableModels`, {
+      const response = await fetchWithTimeout(`${endpoint}/${ANTIGRAVITY_API_VERSION}:fetchAvailableModels`, {
         method: "POST",
         headers,
         body: JSON.stringify({ project: projectId }),
@@ -100,7 +100,7 @@ async function fetchAvailableModels(
 }
 
 /**
- * Fetch user quota from v1internal:retrieveUserQuota
+ * Fetch user quota from :retrieveUserQuota
  */
 async function fetchUserQuota(accessToken: string, projectId: string): Promise<QuotaBucket[]> {
   const headers: Record<string, string> = {
@@ -111,7 +111,7 @@ async function fetchUserQuota(accessToken: string, projectId: string): Promise<Q
 
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const response = await fetchWithTimeout(`${endpoint}/v1internal:retrieveUserQuota`, {
+      const response = await fetchWithTimeout(`${endpoint}/${ANTIGRAVITY_API_VERSION}:retrieveUserQuota`, {
         method: "POST",
         headers,
         body: JSON.stringify({ project: projectId }),

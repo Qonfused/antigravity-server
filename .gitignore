@@ -29,6 +29,3 @@ npm-debug.log*
 
 # Bun
 bun.lockb
-
-# Local config (contains tokens - DO NOT COMMIT)
-# Tokens are stored in ~/.config/antigravity-server/ by default

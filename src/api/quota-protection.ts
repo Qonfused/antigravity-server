@@ -17,6 +17,7 @@ import {
   SOFT_QUOTA_THRESHOLD_PERCENT,
   QUOTA_CACHE_TTL_MS,
   FETCH_TIMEOUT_MS,
+  ANTIGRAVITY_API_VERSION,
 } from "../constants.js";
 
 // =============================================================================
@@ -104,7 +105,7 @@ async function fetchWithTimeout(
 }
 
 /**
- * Fetch available models from v1internal:fetchAvailableModels
+ * Fetch available models from :fetchAvailableModels
  */
 async function fetchModels(
   accessToken: string,
@@ -118,7 +119,7 @@ async function fetchModels(
 
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const response = await fetchWithTimeout(`${endpoint}/v1internal:fetchAvailableModels`, {
+      const response = await fetchWithTimeout(`${endpoint}/${ANTIGRAVITY_API_VERSION}:fetchAvailableModels`, {
         method: "POST",
         headers,
         body: JSON.stringify({ project: projectId }),
@@ -152,7 +153,7 @@ async function fetchModels(
 }
 
 /**
- * Fetch user quota buckets from v1internal:retrieveUserQuota
+ * Fetch user quota buckets from :retrieveUserQuota
  */
 async function fetchUserQuota(
   accessToken: string,
@@ -166,7 +167,7 @@ async function fetchUserQuota(
 
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const response = await fetchWithTimeout(`${endpoint}/v1internal:retrieveUserQuota`, {
+      const response = await fetchWithTimeout(`${endpoint}/${ANTIGRAVITY_API_VERSION}:retrieveUserQuota`, {
         method: "POST",
         headers,
         body: JSON.stringify({ project: projectId }),

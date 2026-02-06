@@ -13,6 +13,7 @@ import {
   ANTIGRAVITY_ENDPOINTS,
   ANTIGRAVITY_HEADERS,
   ANTIGRAVITY_DEFAULT_PROJECT_ID,
+  ANTIGRAVITY_API_VERSION,
 } from "../constants.js";
 
 async function main(): Promise<void> {
@@ -47,8 +48,8 @@ async function main(): Promise<void> {
 
     // Try fetchAvailableModels
     try {
-      console.log("\n1️⃣  v1internal:fetchAvailableModels");
-      const response = await fetch(`${endpoint}/v1internal:fetchAvailableModels`, {
+      console.log(`\n1️⃣  ${ANTIGRAVITY_API_VERSION}:fetchAvailableModels`);
+      const response = await fetch(`${endpoint}/${ANTIGRAVITY_API_VERSION}:fetchAvailableModels`, {
         method: "POST",
         headers,
         body: JSON.stringify({ project: projectId }),
@@ -67,8 +68,8 @@ async function main(): Promise<void> {
 
     // Try retrieveUserQuota
     try {
-      console.log("\n2️⃣  v1internal:retrieveUserQuota");
-      const response = await fetch(`${endpoint}/v1internal:retrieveUserQuota`, {
+      console.log(`\n2️⃣  ${ANTIGRAVITY_API_VERSION}:retrieveUserQuota`);
+      const response = await fetch(`${endpoint}/${ANTIGRAVITY_API_VERSION}:retrieveUserQuota`, {
         method: "POST",
         headers,
         body: JSON.stringify({ project: projectId }),
@@ -87,8 +88,8 @@ async function main(): Promise<void> {
 
     // Try loadCodeAssist
     try {
-      console.log("\n3️⃣  v1internal:loadCodeAssist");
-      const response = await fetch(`${endpoint}/v1internal:loadCodeAssist`, {
+      console.log(`\n3️⃣  ${ANTIGRAVITY_API_VERSION}:loadCodeAssist`);
+      const response = await fetch(`${endpoint}/${ANTIGRAVITY_API_VERSION}:loadCodeAssist`, {
         method: "POST",
         headers,
         body: JSON.stringify({

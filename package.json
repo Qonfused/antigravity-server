@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "bun run dist/server.js",
     "auth": "bun run src/cli/auth.ts",
-    "quota": "bun run src/cli/quota.ts"
+    "quota": "bun run src/cli/quota.ts",
+    "update-constants": "bun run scripts/update-constants.ts"
   },
   "dependencies": {
     "hono": "^4.11.7"

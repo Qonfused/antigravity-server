@@ -15,18 +15,18 @@ export const ANTIGRAVITY_CLIENT_SECRET = "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";
 export const ANTIGRAVITY_REDIRECT_URI = "http://localhost:51121/oauth-callback";
 
 export const ANTIGRAVITY_SCOPES = [
+  "https://www.googleapis.com/auth/cclog",
   "https://www.googleapis.com/auth/cloud-platform",
+  "https://www.googleapis.com/auth/experimentsandconfigs",
   "https://www.googleapis.com/auth/userinfo.email",
   "https://www.googleapis.com/auth/userinfo.profile",
-  "https://www.googleapis.com/auth/cclog",
-  "https://www.googleapis.com/auth/experimentsandconfigs",
 ] as const;
 
 // =============================================================================
 // API Endpoints
 // =============================================================================
 
-export const ANTIGRAVITY_ENDPOINT_DAILY = "https://daily-cloudcode-pa.sandbox.googleapis.com";
+export const ANTIGRAVITY_ENDPOINT_DAILY = "https://daily-cloudcode-pa.googleapis.com";
 export const ANTIGRAVITY_ENDPOINT_AUTOPUSH = "https://autopush-cloudcode-pa.sandbox.googleapis.com";
 export const ANTIGRAVITY_ENDPOINT_PROD = "https://cloudcode-pa.googleapis.com";
 
@@ -37,21 +37,25 @@ export const ANTIGRAVITY_ENDPOINTS = [
   ANTIGRAVITY_ENDPOINT_PROD,
 ] as const;
 
-/** Default project ID for accounts without a managed project */
-export const ANTIGRAVITY_DEFAULT_PROJECT_ID = "rising-fact-p41fc";
-
 // =============================================================================
 // Request Headers
 // =============================================================================
 
-export const ANTIGRAVITY_VERSION = "1.15.8";
+export const ANTIGRAVITY_VERSION = "1.16.5";
+export const ANTIGRAVITY_API_VERSION = "v1internal";
+
+export const ANTIGRAVITY_API_USER_AGENT = "google-api-nodejs-client/9.15.1";
+export const ANTIGRAVITY_API_CLIENT = "google-cloud-sdk vscode_cloudshelleditor/0.1";
+export const ANTIGRAVITY_CLIENT_METADATA = '{"ideType":"IDE_UNSPECIFIED","platform":"PLATFORM_UNSPECIFIED","pluginType":"GEMINI"}';
 
 export const ANTIGRAVITY_HEADERS = {
-  "User-Agent": `antigravity/${ANTIGRAVITY_VERSION} linux/amd64`,
-  "X-Goog-Api-Client": "google-cloud-sdk vscode_cloudshelleditor/0.1",
-  "Client-Metadata":
-    '{"ideType":"IDE_UNSPECIFIED","platform":"PLATFORM_UNSPECIFIED","pluginType":"GEMINI"}',
+  "User-Agent": ANTIGRAVITY_API_USER_AGENT,
+  "X-Goog-Api-Client": ANTIGRAVITY_API_CLIENT,
+  "Client-Metadata": ANTIGRAVITY_CLIENT_METADATA,
 } as const;
+
+/** Default project ID for accounts without a managed project */
+export const ANTIGRAVITY_DEFAULT_PROJECT_ID = "rising-fact-p41fc";
 
 // =============================================================================
 // Token Configuration

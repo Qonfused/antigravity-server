@@ -86,7 +86,7 @@ export function transformResponse(antigravityResponse: any, model: string): Open
         finish_reason: finishReason,
       },
     ],
-    // Usage is not typically provided by Antigravity v1internal
+    // Usage is not typically provided by the Antigravity internal API
     usage: {
       prompt_tokens: 0,
       completion_tokens: 0,

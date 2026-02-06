@@ -14,7 +14,7 @@
 
 import { loadTokens } from "../auth/storage.js";
 import { refreshAccessToken, isTokenExpired } from "../auth/token.js";
-import { ANTIGRAVITY_ENDPOINTS, ANTIGRAVITY_HEADERS } from "../constants.js";
+import { ANTIGRAVITY_ENDPOINTS, ANTIGRAVITY_HEADERS, ANTIGRAVITY_API_VERSION } from "../constants.js";
 
 // =============================================================================
 // Constants
@@ -200,7 +200,7 @@ export async function executeGoogleSearch(request: SearchRequest): Promise<Searc
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
       console.log(`[search] Trying ${endpoint}...`);
-      const response = await fetch(`${endpoint}/v1internal:generateContent`, {
+      const response = await fetch(`${endpoint}/${ANTIGRAVITY_API_VERSION}:generateContent`, {
         method: "POST",
         headers,
         body: JSON.stringify(body),

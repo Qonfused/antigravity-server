@@ -16,6 +16,7 @@ import {
   ANTIGRAVITY_ENDPOINTS,
   ANTIGRAVITY_HEADERS,
   FETCH_TIMEOUT_MS,
+  ANTIGRAVITY_API_VERSION,
 } from "../constants.js";
 import type { AuthorizationResult, TokenExchangeResult, TokenData } from "../types.js";
 
@@ -126,7 +127,7 @@ async function fetchProjectId(accessToken: string): Promise<string> {
 
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const response = await fetchWithTimeout(`${endpoint}/v1internal:loadCodeAssist`, {
+      const response = await fetchWithTimeout(`${endpoint}/${ANTIGRAVITY_API_VERSION}:loadCodeAssist`, {
         method: "POST",
         headers,
         body: JSON.stringify({

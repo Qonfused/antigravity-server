@@ -172,7 +172,7 @@ function transformMessage(msg: OpenAIMessage): AntigravityContent | null {
   }
 
   // Handle Tool Responses
-  // Antigravity API (v1internal) expects functionResponse inside a "user" role message.
+  // The Antigravity API expects functionResponse inside a "user" role message.
   // OpenAI's "tool" role maps to this pattern. We require msg.name to be set since
   // Antigravity needs the function name but OpenAI only provides tool_call_id.
   if (msg.role === "tool" && msg.tool_call_id) {

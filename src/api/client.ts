@@ -10,7 +10,7 @@
 import { loadTokens, saveTokens } from "../auth/storage.js";
 import { refreshAccessToken, isTokenExpired } from "../auth/token.js";
 import type { AntigravityRequest } from "../transform/types.js";
-import { ANTIGRAVITY_ENDPOINTS, ANTIGRAVITY_HEADERS, FETCH_TIMEOUT_MS } from "../constants.js";
+import { ANTIGRAVITY_ENDPOINTS, ANTIGRAVITY_HEADERS, FETCH_TIMEOUT_MS, ANTIGRAVITY_API_VERSION } from "../constants.js";
 
 export interface APIClientOptions {
   stream?: boolean;
@@ -108,7 +108,7 @@ export async function sendChatRequest(
   // Try endpoints in priority order (daily → autopush → prod)
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const url = `${endpoint}/v1internal:${action}${queryString}`;
+      const url = `${endpoint}/${ANTIGRAVITY_API_VERSION}:${action}${queryString}`;
       console.log(`[api] Trying ${endpoint}/${action}...`);
 
       const response = await fetchWithTimeout(
@@ -159,7 +159,7 @@ export async function fetchModels(): Promise<any> {
   // Try each endpoint
   for (const endpoint of ANTIGRAVITY_ENDPOINTS) {
     try {
-      const url = `${endpoint}/v1internal:fetchAvailableModels`;
+      const url = `${endpoint}/${ANTIGRAVITY_API_VERSION}:fetchAvailableModels`;
       console.log(`[models] Trying ${endpoint}...`);
 
       const response = await fetchWithTimeout(url, {
